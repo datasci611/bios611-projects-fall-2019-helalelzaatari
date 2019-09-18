@@ -1,6 +1,8 @@
 Main Goal:
 
-- Help shelter allocate their resources and budget efficiently in order to help as many people as possible.
+- Help shelter allocate their resources and budget efficiently in order to help as many people as possible. 
+
+- Help shelter with planning.
 
 
 Brainstorm:
