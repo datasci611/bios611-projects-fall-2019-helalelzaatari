@@ -1,27 +1,23 @@
-library(shiny)
+
 library(shinydashboard)
+source("helper_function.R")
 
-
-
-source("helperfunctions.R")
-
-
+# Loading helper functions
 
 ui <- dashboardPage(
   dashboardHeader(),
   dashboardSidebar(),
-  
   dashboardBody(
-    # Use a fluid Bootstrap layout
     fluidPage(    
       
       # Give the page a title
+      
       titlePanel("Amount of Food by Year"),
       
       # Generate a row with a sidebar
       sidebarLayout(
         
-        # Define the sidebar with one input
+        # Define the sidebar with one input which is the years from 2008-2018
         sidebarPanel(
           selectInput("year", "Year:", 
                       choices=list("2008" = 2008, "2009" = 2009, "2010" = 2010, "2011"= 2011,
@@ -41,14 +37,12 @@ ui <- dashboardPage(
   )
 )
 
-server <- function(input, output) { 
-  
-  # Fill in the spot we created for a plot
+server <- function(input, output) {
+  # renderPlot creates barplot and links to ui
   output$foodplot <- renderPlot({
-    helperfunction1(input$year)})
-}
+    helper_function(as.numeric(input$year))
+  })
   
-
+}
 
 shinyApp(ui, server)
-
